@@ -5,10 +5,8 @@ class Demo extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			products: [],
-			services: [],
-			clients: [],
-			updating: false
+			products: [
+			],
 		};
 		
 		this.clearProducts = this.clearProducts.bind(this);
@@ -38,8 +36,7 @@ class Demo extends React.Component {
 					// fetch correcto
 					// grabar objeto en state
 					this.setState({ 
-						products : responseJson.products, 
-						services: responseJson.services
+						products : responseJson.products
 					});
 				} else {
 					alert("No hay data")
@@ -71,7 +68,7 @@ class Demo extends React.Component {
 		}).then(function(response) {
 				var responseJson = null;
 				if (response.ok) {
-					responseJson = response.json();                
+					responseJson = response.json();
 				}
 				return responseJson;
 		}).then(function(responseJson) {
@@ -111,22 +108,6 @@ class Demo extends React.Component {
 				</tbody>
 			</table>
 			<hr/>
-			<h3>Servicios</h3>
-			<table border="1">
-				<thead>
-					<th>Nombre</th>
-					<th>Categoria</th>
-				</thead>
-				<tbody>
-				{this.state.services.map((object) => {
-					return (<tr key={ object.id }>
-							<td>{ object.name }</td>
-							<td>{ object.categoryName }</td>
-						</tr>)
-					})
-				}
-				</tbody>
-			</table>
 			</>
 		);
 	}
